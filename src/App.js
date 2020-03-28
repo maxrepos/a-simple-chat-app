@@ -1,5 +1,11 @@
 import React from 'react';
-import { Paper, Typography, Button, Divider } from '@material-ui/core';
+import {
+  Paper,
+  Typography,
+  Button,
+  Divider,
+  TextField
+} from '@material-ui/core';
 import './App.css';
 
 class UX extends React.Component {
@@ -16,8 +22,6 @@ class UX extends React.Component {
 
   handleFormSubmit(formValue) {
     {
-      this.state.currentMessageValue.length > 0 &&
-        alert('You have submitted: ' + this.state.currentMessageValue);
       this.state.currentMessageValue.length > 0 &&
         this.setState({
           messagesList: this.state.messagesList.concat(
@@ -54,7 +58,7 @@ function Preview(props) {
   return (
     <div>
       <br />
-      <Typography variant="h4">Message preview:</Typography>
+      <Typography variant="h5">Message preview:</Typography>
       <br />
       <Typography variant="body1">{props.messageContent}</Typography>
     </div>
@@ -67,7 +71,7 @@ function AllMessages(props) {
       {props.allMessages.length > 0 && (
         <div>
           <br />
-          <Typography variant="h4">All messages:</Typography>
+          <Typography variant="h5">All messages:</Typography>
           <br />
           <Typography variant="body2">
             <ul>
@@ -121,8 +125,15 @@ class Form extends React.Component {
       <div>
         <form id="message-form" onSubmit={this.handleSubmit}>
           <label>
-            <Typography variant="h4">Your message:</Typography> <br />
-            <input type="text" value={formValue} onChange={this.handleChange} />
+            <Typography variant="h5">Your message:</Typography> <br />
+            <TextField
+              id="outlined-basic"
+              label="What's on your mind?"
+              variant="outlined"
+              type="text"
+              value={formValue}
+              onChange={this.handleChange}
+            />
           </label>
           <br />
           <div className="Button">
